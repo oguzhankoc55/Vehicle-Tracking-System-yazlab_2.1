@@ -1,0 +1,149 @@
+<html>
+<head>
+	<style>
+        .myDiv {
+          border: 3px outset rgba(255, 0, 0, 0);
+          background-color: lightblue;
+          text-align: center;
+        }
+        </style>
+
+        <div class="myDiv">
+            <h2> Kullanıcı Giriş Zamanı:{{Giris[0][0]}}  </h2>
+            
+        </div>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+	<link rel="stylesheet" href="static/assets/css/main.css" />
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+        integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+        crossorigin="anonymous">
+        
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBjjW-oyqJoqvr4tOkfaG1qZcJmVcPFwAo&callback=initMap"></script>
+<script type="text/javascript">
+    function initialize() {
+        const myLatLng = { lat: 59.85855203, lng: 17.64521252 };
+        var map = new google.maps.Map(document.getElementById("map_canvas"), {
+            zoom: 8,
+            center: myLatLng,
+        });
+
+        var marker_icon_FF0000 = {
+            url: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAiCAYAAACwaJKDAAAABmJLR0QA/wD/AP+gvaeTAAACBklEQVRIia3VzUtUURgH4GdG/AiyZZShtWgXUbSIFtGqRYtqWRLhXyBYf0K6MaJQ2gRtayHtijYpleHKSCgIcRHoIiOSKEzLKea0OOeqTfPlzPzg5Qwz9zz3nXPvPTeneo7gNA4gjyI+Ygbva8z9L2cxi9BHOE+4msY+gliz6biayWE0R7GfMEcoEkJJzRH6CbnY+WiaVxEc6yY8KQOVq8eE7tj1WCV4qIswUyeY1QyhK8JDpWAP1m7vEMzqTkTXkrOZkYOEQoNogXAowiPE2wQuDqC9nktZJu0YSE72XRs2phrsMqup2OkG2vLpRB19DXaZJc3vQHv294Um0e3z8yigsNQkmuYXUMie5/npJtE0fz55YLiXsNHELdUbV2B4+4n2Y/Vmg+itCK4m558MdhBe7hCcJnRGdLDS0ox3E17XCb4h7IngeLX1zuFhD2G5BriytY4Tqmx9WXbh3Tnl99KsLkdwAbtrgVmO4/eDCuCkzd3/TL1glru9hF8lYJFwMoKPdgrCXqzfL0GfR7CIo42gcO9YCXopolONgnAC4W0Cv9l8dVxpBoWFGwmdiOC6Glc8X+3HlKeT6cOzOLzAjyaaBBc602ZzOHZ6vVkQ9kl7Qi6ip1qBwpdrEfwjPnFVU8+awuKrOC7hZ6vQlQ9baM3Ui379HsfVVqKf07jcSvRTGhfrOfgvIP3ECS77BDoAAAAASUVORK5CYII=",
+            labelOrigin: new google.maps.Point(10, 11)
+        };
+
+       
+
+        {% for veri in data1 %}
+
+            new google.maps.Marker({
+                position: new google.maps.LatLng({{veri["x"]}},{{veri["y"]}}),
+                icon: marker_icon_FF0000,
+                map: map
+            });
+            
+        {% endfor %}
+        
+        const array = []
+
+        {% for veri in data1 %}
+
+        new google.maps.Marker({
+
+        position: { lat: {{ veri["x"] }}, lng: {{ veri["y"] }} },
+        map,
+        icon:"http://maps.google.com/mapfiles/ms/icons/blue-dot.png",
+        title: "Hello World!",
+        });
+
+        {% endfor %} 
+
+        new google.maps.Polyline({
+            clickable: false,
+            geodesic: true,
+            strokeColor: "red",
+            strokeOpacity: 1.000000,
+            strokeWeight: 2,
+            map: map,
+            path: [
+            {% for veri in data1 %}
+
+                new google.maps.LatLng({{veri["x"]}}, {{veri["y"]}}),
+        
+    
+            {% endfor %}
+                
+            ]
+        });
+
+        {% for veri in data2 %}
+
+            new google.maps.Marker({
+                
+                position: { lat: {{ veri["x"] }}, lng: {{ veri["y"] }} },
+                map,
+                icon:"http://maps.google.com/mapfiles/ms/icons/yellow-dot.png",
+                title: "Hello World!",
+            });
+
+        {% endfor %}
+
+        new google.maps.Polyline({
+            clickable: false,
+            geodesic: true,
+            strokeColor: "#0000FF",
+            strokeOpacity: 1.000000,
+            strokeWeight: 2,
+            map: map,
+            path: [
+            {% for veri in data2 %}
+
+                new google.maps.LatLng({{veri["x"]}}, {{veri["y"]}}),
+        
+    
+            {% endfor %}
+                
+            ]
+        });
+
+    }
+    function geri(){
+    
+        history.go(-1)
+
+    }
+</script>
+</head>
+<body style="margin:0px; padding:0px;" onload="initialize()">
+    <div id="map_canvas" style="width: %80; height: 500px;" ></div>
+
+    <section id="banner">
+			<div class="content">
+				
+				<ul class="actions">
+					<li><a href="{{ url_for('home.secim' ) }}" class="button scrolly">Seçim</a></li>
+				</ul>
+			</div>
+            <div class="content">
+				
+				<ul class="actions">
+                    <a href="{{ url_for('users.Logout') }}" class="button scrolly">{{ username }} Çıkış</a>
+                </ul>
+			</div>
+		</section>
+        
+        <div class="myDiv">
+            <br> Veriler:</br>
+            <br> Data1:</br>
+            {% for veri1 in data1 %}
+                {{veri1["date"]}} # {{veri1["x"]}} # {{veri1["y"]}}</br>
+            {% endfor %}
+            <br> Data2:</br>
+            {% for veri2 in data2 %}
+                {{veri2["date"]}} # {{veri2["x"]}} # {{veri2["y"]}}</br>
+            {% endfor %}
+        </div>
+</body>
+</html>

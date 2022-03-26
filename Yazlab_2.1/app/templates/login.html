@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+{% extends 'base.html' %}
+{% block body_content %}
+
+<section id="one" class="wrapper">
+    <div class="inner">
+        <form method="post" action="{{ url_for('users.Login') }}">
+            <div class="row uniform">
+                <div class="6u 12u$(xsmall)">
+                    <input type="text" name="username" id="name" value="" placeholder="Kullanici Adi" />
+                </div>
+                <div class="6u$ 12u$(xsmall)">
+                    <input type="password" name="password" id="password" value="" placeholder="Şifre" />
+                </div>
+                <div class="12u$">
+                    <ul class="actions">
+                        <li><input type="submit" value="Giriş yap" href="{{ url_for('home.map1') }}" /></li>
+                    </ul>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+
+{% endblock %}
