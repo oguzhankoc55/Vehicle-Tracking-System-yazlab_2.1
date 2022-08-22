@@ -56,7 +56,7 @@ onun bilgileri firestore’dan çekilerek haritada gösterilir.Tüm bunları yap
 flask framework’ün bize sağladığı MVC yapısı kullanılır.MVC yapısının içinde 
 bulunan Models,Views ve Contrallers şu şekilde kullanılmıştır.
 
-## Contrallers:
+## Controllers:
 
 ### session_interface.py:
 Kullanıcın bilgilerinin tutulmasını sağlar
