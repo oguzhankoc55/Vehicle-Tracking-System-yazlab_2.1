@@ -90,12 +90,12 @@ Kullanıcının bilgilerinin alınarak login yapılması sağlanır.
 ![image](https://user-images.githubusercontent.com/58952369/180182203-1ea908db-825a-4965-b431-57fd22926c07.png)
 
 
-###Seçim Ekranı :
+### Seçim Ekranı :
 
 ![image](https://user-images.githubusercontent.com/58952369/180182355-28c6da0f-e9b7-4520-be3f-1e728cf9933b.png)
 
 
-###Seçilen bilgilerin sonuçlarının gösterildiği ekran:
+### Seçilen bilgilerin sonuçlarının gösterildiği ekran:
 
 ![image](https://user-images.githubusercontent.com/58952369/180182395-17799190-c7b4-4a84-a026-2984574f194e.png)
 
