@@ -83,7 +83,7 @@ Kullanıcının bilgilerinin alınarak login yapılması sağlanır.
 
 ![image](https://user-images.githubusercontent.com/58952369/180182094-9648a5ca-fba3-482d-8a9d-c8300bfa3f04.png)
 
-###Son 30 dakikalık Verinin Gösterildiği Ekran :
+### Son 30 dakikalık Verinin Gösterildiği Ekran :
 
 ![image](https://user-images.githubusercontent.com/58952369/180182171-770cb02f-d325-4d29-bb44-7b6ac9653ab9.png)
 
